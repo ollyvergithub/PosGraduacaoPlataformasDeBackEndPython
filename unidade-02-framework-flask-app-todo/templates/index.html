@@ -1,0 +1,63 @@
+{% extends "./partials/application.html" %}
+
+{% block html_attribs %} lang="pt-BR"{% endblock %}
+
+{% block title %}Página Index{% endblock %}
+
+{% block content %}
+    <section class="container" id="content">
+        <article>
+            <header class="mt-2 fundo-vermelho">
+                <h1>APP Todo Criado com Flask - Nome: {{ nome|upper }}</h1>
+            </header>
+            <p><strong>Imprimindo valores passados pela app.py</strong></p>
+            {% if iteravel_nomes %}
+                <ul class="list-group">
+                    {% for nome in iteravel_nomes %}
+                        <li class="list-group-item">{{ nome }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <button onclick="dispararAlert()" class="btn btn-primary">Dispara js customizado em js/myscripts.js</button>
+        </article>
+
+        <article>
+        <div class="page-header">
+          <h1 class="text-center text-primary">ToDo: Never forget your duties</h1>
+       </div>
+       {% if tasks|length < 1 %} <h4 class="text-center text-warning">There are no tasks. Create one below!</h4>
+          {% else %}
+          <table class="table table-striped">
+             <thead>
+                <tr>
+                   <th>Description</th>
+                   <th>Created</th>
+                   <th>Actions</th>
+                </tr>
+             </thead>
+             <tbody>
+                {% for task in tasks %}
+                <tr>
+                   <td class="align-middle">{{ task.description }}</td>
+                   <td class="align-middle">{{ task.date_created.date() }}</td>
+                   <td class="align-middle actions">
+                      <a class="btn btn-success" href="/update/{{task.id}}">Update</a> |
+                      <a class="btn btn-danger" href="/delete/{{task.id}}">Delete</a>
+                   </td>
+                </tr>
+                {% endfor %}
+             </tbody>
+          </table>
+          {% endif %}
+
+          <form class="form-inline" action="/" method="POST">
+             <div class="form-group">
+                <label for="description"></label>
+                <input type="text" class="form-control" name="description" id="description">
+                <button type="submit" class="btn btn-primary">Add</button>
+             </div>
+          </form>
+
+        </article>
+    </section>
+{% endblock %}
