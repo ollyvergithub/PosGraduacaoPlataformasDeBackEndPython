@@ -1,0 +1,18 @@
+{% extends "application.html" %}
+
+{% block content %}
+    <h1>Restaurantes no MenuHub</h1>
+    <a href="new/">Incluir</a>
+    {% if restaurants %}
+        {% for restaurant in restaurants %}
+            <p>{{ restaurant.name }}</p>
+            <p>
+            <a href='{{ restaurant.restaurant_id }}/menus/{{ restaurant.id }}'>Menu |</a>
+            <a href='{{ restaurant.restaurant_id }}/edit/{{ restaurant.id }}'>Edit |</a>
+            <a href='{{ restaurant.restaurant_id }}/delete/{{ restaurant.id }}'>Delete</a>
+            </p>
+        {% endfor %}
+    {% else %}
+        <p>Nenhum restaurante no MenuHub, por favor inclua um.</p>
+    {% endif %}
+{% endblock content %}

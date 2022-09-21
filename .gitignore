@@ -2,6 +2,7 @@
 
 /_material
 /.idea
+__pycache__/
 
 # dependencies
 /node_modules
@@ -13,3 +14,7 @@ package-lock.json
 /_material/
 /unidade-01-linguagem-python/
 /unidade-02-framework-flask-app-todo/venv/
+/unidade-03-framework-django-app-blog/venv/
+/unidade-03-framework-django-app-menuhub/venv/
+/unidade-03-framework-django-app-menuhub/_material/
+/unidade-03-framework-django-app-blog/
